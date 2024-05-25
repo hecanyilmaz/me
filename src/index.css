@@ -641,6 +641,10 @@ select {
 	        box-shadow: 2px 2px 0 -1px var(--secondary);
 }
 
+.mylink {
+  color: inherit;
+  text-decoration: inherit;
+}
 /* menu-bar */
 ul[role] {
   margin: 0;
