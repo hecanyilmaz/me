@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { SceneWithPath } from '../../types/scenes';
 
@@ -77,11 +77,10 @@ const TimelineDot = styled.div`
   }
 `;
 
-const SceneImage = styled.img`
+const ImageContainer = styled.div`
+  position: relative;
   width: 300px;
   height: 300px;
-  object-fit: cover;
-  border-radius: 8px;
   margin-bottom: ${({ theme }) => theme.spacing[4]};
   
   ${({ theme }) => theme.mediaQueries.maxTablet} {
@@ -89,6 +88,54 @@ const SceneImage = styled.img`
     max-width: 250px;
     height: 200px;
   }
+`;
+
+const SceneImage = styled.img<{ $loaded: boolean }>`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: opacity 0.3s ease;
+  opacity: ${({ $loaded }) => $loaded ? 1 : 0};
+`;
+
+const LoadingSkeleton = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    ${({ theme }) => theme.colors.lightgray} 25%,
+    ${({ theme }) => theme.colors.gray} 50%,
+    ${({ theme }) => theme.colors.lightgray} 75%
+  );
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: 8px;
+  
+  @keyframes loading {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+`;
+
+const ErrorPlaceholder = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: ${({ theme }) => theme.colors.lightgray};
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${({ theme }) => theme.colors.darkgray};
+  font-family: ${({ theme }) => theme.typography.fontFamily.regular};
+  font-size: ${({ theme }) => theme.typography.fontSize.sm};
 `;
 
 const SceneDate = styled.div`
@@ -118,6 +165,68 @@ const formatDate = (dateString: string): string => {
   });
 };
 
+interface LazyImageProps {
+  src: string;
+  alt: string;
+}
+
+const LazyImage: React.FC<LazyImageProps> = ({ src, alt }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const imgRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      { 
+        rootMargin: '50px',
+        threshold: 0.1
+      }
+    );
+
+    if (imgRef.current) {
+      observer.observe(imgRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const handleLoad = () => {
+    setIsLoaded(true);
+  };
+
+  const handleError = () => {
+    setIsError(true);
+    setIsLoaded(true);
+  };
+
+  return (
+    <ImageContainer ref={imgRef}>
+      {!isLoaded && !isError && <LoadingSkeleton />}
+      {isError ? (
+        <ErrorPlaceholder>Image not available</ErrorPlaceholder>
+      ) : (
+        isInView && (
+          <SceneImage
+            src={src}
+            alt={alt}
+            $loaded={isLoaded}
+            onLoad={handleLoad}
+            onError={handleError}
+            loading="lazy"
+          />
+        )
+      )}
+    </ImageContainer>
+  );
+};
+
 export const Timeline: React.FC<TimelineProps> = ({ scenes }) => {
   return (
     <TimelineContainer>
@@ -125,13 +234,9 @@ export const Timeline: React.FC<TimelineProps> = ({ scenes }) => {
         <TimelineItem key={scene.id}>
           <TimelineDot />
           <TimelineContent>
-            <SceneImage 
+            <LazyImage 
               src={scene.photo_path} 
               alt={scene.place}
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.style.display = 'none';
-              }}
             />
             <SceneDate>{formatDate(scene.date)}</SceneDate>
             <ScenePlace>{scene.place}</ScenePlace>

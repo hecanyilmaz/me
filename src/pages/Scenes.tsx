@@ -4,6 +4,7 @@ import { Container, Section, Heading, Text, Timeline } from '../components';
 import scenesData from '../data/scenes.json';
 import { ScenesData, SceneWithPath } from '../types/scenes';
 import { sceneImages } from '../assets/scenes';
+import { useImagePreloader } from '../hooks/useImagePreloader';
 
 const ContentWrapper = styled.div`
   max-width: 1000px;
@@ -19,6 +20,13 @@ export const Scenes: React.FC = () => {
     ...scene,
     photo_path: sceneImages[scene.photo_name] || ''
   }));
+
+  // Preload images for better performance
+  const imagePaths = scenesWithImages.map(scene => scene.photo_path).filter(Boolean);
+  useImagePreloader({ 
+    images: imagePaths, 
+    priority: 2 // Preload first 2 images immediately
+  });
   
   return (
     <Section background="cream">
