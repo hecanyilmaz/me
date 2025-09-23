@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Container, Section, Text } from '../components';
 import { Project } from '../types/projects';
@@ -17,17 +17,22 @@ const ProjectsList = styled.div`
   margin-top: ${({ theme }) => theme.spacing[8]};
 `;
 
-const ProjectItem = styled.div`
+const ProjectItem = styled.div<{ $delay: number; $isVisible: boolean }>`
   display: block;
   padding: ${({ theme }) => theme.spacing[5]} ${({ theme }) => theme.spacing[6]};
   border-left: 3px solid transparent;
-  transition: all 0.2s ease;
   border-radius: 4px;
+  opacity: ${({ $isVisible }) => $isVisible ? 1 : 0};
+  transform: ${({ $isVisible }) => $isVisible ? 'translateY(0)' : 'translateY(20px)'};
+  transition: opacity 0.6s ease ${({ $delay }) => $delay}s, 
+              transform 0.6s ease ${({ $delay }) => $delay}s,
+              background-color 0.2s ease,
+              border-left-color 0.2s ease;
   
   &:hover {
     background-color: rgba(51, 51, 51, 0.05);
     border-left-color: ${({ theme }) => theme.colors.darkgray};
-    transform: translateX(4px);
+    transform: ${({ $isVisible }) => $isVisible ? 'translateX(4px)' : 'translateY(20px)'};
   }
   
   ${({ theme }) => theme.mediaQueries.maxTablet} {
@@ -152,10 +157,21 @@ const StatsText = styled(Text)`
 `;
 
 export const Projects: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  
   // Sort projects by date (most recent first)
   const sortedProjects = [...(projectsData as Project[])].sort((a, b) => 
     new Date(b.date).getTime() - new Date(a.date).getTime()
   );
+
+  useEffect(() => {
+    // Trigger staggered animations after component mounts
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
@@ -178,8 +194,12 @@ export const Projects: React.FC = () => {
           </StatsSection>
 
           <ProjectsList>
-            {sortedProjects.map((project) => (
-              <ProjectItem key={project.id}>
+            {sortedProjects.map((project, index) => (
+              <ProjectItem 
+                key={project.id}
+                $delay={index * 0.1}
+                $isVisible={isVisible}
+              >
                 <ProjectHeader>
                   <ProjectTitle>{project.title}</ProjectTitle>
                   <ProjectDate>{formatDate(project.date)}</ProjectDate>

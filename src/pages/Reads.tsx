@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Container, Section, Heading, Text } from '../components';
 import { ReadArticle } from '../types/reads';
@@ -17,19 +17,24 @@ const ReadsList = styled.div`
   margin-top: ${({ theme }) => theme.spacing[8]};
 `;
 
-const ReadItem = styled.a`
+const ReadItem = styled.a<{ $delay: number; $isVisible: boolean }>`
   display: block;
   padding: ${({ theme }) => theme.spacing[5]} ${({ theme }) => theme.spacing[6]};
   border-left: 3px solid transparent;
   text-decoration: none;
   color: inherit;
-  transition: all 0.2s ease;
   border-radius: 4px;
+  opacity: ${({ $isVisible }) => $isVisible ? 1 : 0};
+  transform: ${({ $isVisible }) => $isVisible ? 'translateY(0)' : 'translateY(20px)'};
+  transition: opacity 0.6s ease ${({ $delay }) => $delay}s, 
+              transform 0.6s ease ${({ $delay }) => $delay}s,
+              background-color 0.2s ease,
+              border-left-color 0.2s ease;
   
   &:hover {
     background-color: rgba(51, 51, 51, 0.05);
     border-left-color: ${({ theme }) => theme.colors.darkgray};
-    transform: translateX(4px);
+    transform: ${({ $isVisible }) => $isVisible ? 'translateX(4px)' : 'translateY(20px)'};
   }
   
   ${({ theme }) => theme.mediaQueries.maxTablet} {
@@ -124,10 +129,21 @@ const StatsText = styled(Text)`
 `;
 
 export const Reads: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  
   // Sort reads by date (most recent first)
   const sortedReads = [...(readsData as ReadArticle[])].sort((a, b) => 
     new Date(b.dateRead).getTime() - new Date(a.dateRead).getTime()
   );
+
+  useEffect(() => {
+    // Trigger staggered animations after component mounts
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
@@ -149,12 +165,14 @@ export const Reads: React.FC = () => {
           </StatsSection>
 
           <ReadsList>
-            {sortedReads.map((read) => (
+            {sortedReads.map((read, index) => (
               <ReadItem
                 key={read.id}
                 href={read.link}
                 target="_blank"
                 rel="noopener noreferrer"
+                $delay={index * 0.1}
+                $isVisible={isVisible}
               >
                 <ReadHeader>
                   <ReadTitle>{read.title}</ReadTitle>

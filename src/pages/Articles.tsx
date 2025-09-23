@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Container, Section, Text } from '../components';
 import { Article } from '../types/articles';
 import articlesData from '../data/articles.json';
+import { useMarkdownPreloader } from '../hooks/useMarkdownPreloader';
 
 const ContentWrapper = styled.div`
   max-width: 900px;
@@ -18,7 +19,7 @@ const ArticlesList = styled.div`
   margin-top: ${({ theme }) => theme.spacing[8]};
 `;
 
-const ArticleItem = styled(Link)`
+const ArticleItem = styled(Link)<{ $delay: number; $isVisible: boolean }>`
   display: block;
   padding: ${({ theme }) => theme.spacing[5]} ${({ theme }) => theme.spacing[6]};
   border-left: 3px solid transparent;
@@ -26,11 +27,17 @@ const ArticleItem = styled(Link)`
   color: inherit;
   transition: all 0.2s ease;
   border-radius: 4px;
+  opacity: ${({ $isVisible }) => $isVisible ? 1 : 0};
+  transform: ${({ $isVisible }) => $isVisible ? 'translateY(0)' : 'translateY(20px)'};
+  transition: opacity 0.6s ease ${({ $delay }) => $delay}s, 
+              transform 0.6s ease ${({ $delay }) => $delay}s,
+              background-color 0.2s ease,
+              border-left-color 0.2s ease;
   
   &:hover {
     background-color: rgba(51, 51, 51, 0.05);
     border-left-color: ${({ theme }) => theme.colors.darkgray};
-    transform: translateX(4px);
+    transform: ${({ $isVisible }) => $isVisible ? 'translateX(4px)' : 'translateY(20px)'};
   }
   
   ${({ theme }) => theme.mediaQueries.maxTablet} {
@@ -126,10 +133,28 @@ const StatsText = styled(Text)`
 `;
 
 export const Articles: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  
   // Sort articles by date (most recent first)
   const sortedArticles = [...(articlesData as Article[])].sort((a, b) => 
     new Date(b.date).getTime() - new Date(a.date).getTime()
   );
+
+  // Preload markdown files for better performance
+  const markdownFiles = sortedArticles.map(article => article.markdownFile);
+  useMarkdownPreloader({ 
+    markdownFiles, 
+    priority: 1 // Preload the most recent article immediately
+  });
+
+  useEffect(() => {
+    // Trigger staggered animations after component mounts
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
@@ -156,10 +181,12 @@ export const Articles: React.FC = () => {
           </StatsSection>
 
           <ArticlesList>
-            {sortedArticles.map((article) => (
+            {sortedArticles.map((article, index) => (
               <ArticleItem
                 key={article.id}
                 to={`/articles/${getArticleSlug(article.markdownFile)}`}
+                $delay={index * 0.1}
+                $isVisible={isVisible}
               >
                 <ArticleHeader>
                   <ArticleTitle>{article.title}</ArticleTitle>

@@ -28,12 +28,16 @@ const TimelineContainer = styled.div`
   }
 `;
 
-const TimelineItem = styled.div`
+const TimelineItem = styled.div<{ $delay: number; $isVisible: boolean }>`
   display: flex;
   align-items: flex-start;
   padding: ${({ theme }) => theme.spacing[6]} 0;
   position: relative;
   padding-left: 120px;
+  opacity: ${({ $isVisible }) => $isVisible ? 1 : 0};
+  transform: ${({ $isVisible }) => $isVisible ? 'translateY(0)' : 'translateY(30px)'};
+  transition: opacity 0.8s ease ${({ $delay }) => $delay}s, 
+              transform 0.8s ease ${({ $delay }) => $delay}s;
   
   ${({ theme }) => theme.mediaQueries.maxTablet} {
     padding-left: 70px;
@@ -228,10 +232,25 @@ const LazyImage: React.FC<LazyImageProps> = ({ src, alt }) => {
 };
 
 export const Timeline: React.FC<TimelineProps> = ({ scenes }) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    // Trigger staggered animations after component mounts
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 200);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <TimelineContainer>
       {scenes.map((scene, index) => (
-        <TimelineItem key={scene.id}>
+        <TimelineItem 
+          key={scene.id}
+          $delay={index * 0.2}
+          $isVisible={isVisible}
+        >
           <TimelineDot />
           <TimelineContent>
             <LazyImage 

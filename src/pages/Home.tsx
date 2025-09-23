@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Container, Section, Heading, Text } from '../components';
 import profileImage from '../assets/image.png';
@@ -22,8 +22,11 @@ const AboutContent = styled.div`
   }
 `;
 
-const ImageSection = styled.div`
+const ImageSection = styled.div<{ $isVisible: boolean }>`
   flex-shrink: 0;
+  opacity: ${({ $isVisible }) => $isVisible ? 1 : 0};
+  transform: ${({ $isVisible }) => $isVisible ? 'scale(1)' : 'scale(0.9)'};
+  transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
   
   ${({ theme }) => theme.mediaQueries.maxTablet} {
     order: -1;
@@ -43,8 +46,11 @@ const ProfileImage = styled.img`
   }
 `;
 
-const TextSection = styled.div`
+const TextSection = styled.div<{ $isVisible: boolean }>`
   flex: 1;
+  opacity: ${({ $isVisible }) => $isVisible ? 1 : 0};
+  transform: ${({ $isVisible }) => $isVisible ? 'translateY(0)' : 'translateY(20px)'};
+  transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s;
   
   ${({ theme }) => theme.mediaQueries.maxTablet} {
     text-align: center;
@@ -88,16 +94,27 @@ const ContactLink = styled.a`
 `;
 
 export const Home: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    // Trigger animations after component mounts
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <Section background="cream">
       <Container>
         <ContentWrapper>
           <AboutContent>
-            <ImageSection>
+            <ImageSection $isVisible={isVisible}>
               <ProfileImage src={profileImage} alt="Can Yılmaz" />
             </ImageSection>
             
-            <TextSection>
+            <TextSection $isVisible={isVisible}>
               <ContactText as="p">
                 Hi there!
               </ContactText>
