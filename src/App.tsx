@@ -18,7 +18,7 @@ const MainContent = styled.main`
 function App() {
   return (
     <ThemeProvider>
-      <Router>
+      <Router basename="/me">
         <AppWrapper>
           <Header />
           <MainContent>
