@@ -131,9 +131,19 @@ export const MarkdownViewer: React.FC<MarkdownViewerProps> = ({ markdownFile }) 
         setLoading(true);
         setError(null);
         
-        const response = await fetch(`/articles/${markdownFile}`);
+        // Use process.env.PUBLIC_URL to handle GitHub Pages deployment
+        const publicUrl = process.env.PUBLIC_URL || '';
+        const fetchUrl = `${publicUrl}/articles/${markdownFile}`;
+        
+        console.log('Fetching markdown from:', fetchUrl);
+        console.log('Environment:', process.env.NODE_ENV);
+        console.log('Public URL:', publicUrl);
+        
+        const response = await fetch(fetchUrl);
+        
         if (!response.ok) {
-          throw new Error(`Failed to load article: ${response.statusText}`);
+          console.error('Fetch failed:', response.status, response.statusText);
+          throw new Error(`Failed to load article: ${response.status} ${response.statusText}`);
         }
         
         const content = await response.text();
