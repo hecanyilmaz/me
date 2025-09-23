@@ -133,11 +133,9 @@ export const MarkdownViewer: React.FC<MarkdownViewerProps> = ({ markdownFile }) 
         
         // Use process.env.PUBLIC_URL to handle GitHub Pages deployment
         const publicUrl = process.env.PUBLIC_URL || '';
-        const fetchUrl = `${publicUrl}/articles/${markdownFile}`;
-        
-        console.log('Fetching markdown from:', fetchUrl);
-        console.log('Environment:', process.env.NODE_ENV);
-        console.log('Public URL:', publicUrl);
+        // Ensure we have the correct base path for GitHub Pages
+        const basePath = publicUrl || (process.env.NODE_ENV === 'production' ? '/me' : '');
+        const fetchUrl = `${basePath}/articles/${markdownFile}`;
         
         const response = await fetch(fetchUrl);
         
