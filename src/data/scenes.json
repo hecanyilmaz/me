@@ -2,25 +2,25 @@
   "scenes": [
     {
         "id": "1",
-        "photo_path": "/assets/IMG_0933.JPG", 
+        "photo_name": "IMG_0933.JPG", 
         "date": "2025-03-08",
         "place": "Besiktas, Istanbul"
     },
     {
       "id": "2",
-      "photo_path": "/assets/IMG_0654.JPG",
+      "photo_name": "IMG_0654.JPG",
       "date": "2024-01-25",
       "place": "Kadikoy, Istanbul"
     },
     {
       "id": "3", 
-      "photo_path": "/assets/PHOTO-2024-07-09-22-41-22 2.JPG",
+      "photo_name": "PHOTO-2024-07-09-22-41-22 2.JPG",
       "date": "2024-07-10",
       "place": "Cankaya, Ankara"
     },
     {
       "id": "4",
-      "photo_path": "/assets/IMG_3811.JPG", 
+      "photo_name": "IMG_3811.JPG", 
       "date": "2024-04-13",
       "place": "Beydag, Izmir"
     }

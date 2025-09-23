@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Container, Section, Heading, Text, Timeline } from '../components';
 import scenesData from '../data/scenes.json';
-import { ScenesData } from '../types/scenes';
+import { ScenesData, SceneWithPath } from '../types/scenes';
+import { sceneImages } from '../assets/scenes';
 
 const ContentWrapper = styled.div`
   max-width: 1000px;
@@ -13,11 +14,17 @@ const ContentWrapper = styled.div`
 export const Scenes: React.FC = () => {
   const data: ScenesData = scenesData;
   
+  // Transform scenes to include actual image imports
+  const scenesWithImages: SceneWithPath[] = data.scenes.map(scene => ({
+    ...scene,
+    photo_path: sceneImages[scene.photo_name] || ''
+  }));
+  
   return (
     <Section background="cream">
       <Container>
         <ContentWrapper>
-          <Timeline scenes={data.scenes} />
+          <Timeline scenes={scenesWithImages} />
         </ContentWrapper>
       </Container>
     </Section>

@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Scene } from '../../types/scenes';
+import { SceneWithPath } from '../../types/scenes';
 
 interface TimelineProps {
-  scenes: Scene[];
+  scenes: SceneWithPath[];
 }
 
 const TimelineContainer = styled.div`
