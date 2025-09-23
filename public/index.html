@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f5dc" />
+    <meta name="description" content="Personal about me website" />
+    
+    <!-- Inter Font Family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    
+    <title>About Me - Personal Website</title>
+    
+    <style>
+      /* CSS Custom Properties for the color palette */
+      :root {
+        --red: #c5004a;
+        --darkred: #7f0036;
+        --lightgray: #e0e0e0;
+        --gray: #c0c0c0;
+        --darkgray: #333;
+        --navy: #17050f;
+        --blue: #082840;
+        --white: #fff;
+        --cream: #f5f5dc;
+      }
+      
+      /* Global reset and base styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        background-color: var(--cream);
+        color: var(--darkgray);
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      
+      #root {
+        min-height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>

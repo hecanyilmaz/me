@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Building Scalable React Applications",
+    "summary": "Exploring patterns and best practices for creating maintainable React applications that can grow with your team and requirements.",
+    "date": "2024-01-15",
+    "markdownFile": "building-scalable-react-apps.md",
+    "tags": ["React", "Architecture", "Best Practices"]
+  },
+  {
+    "id": 2,
+    "title": "The Art of Clean Code",
+    "summary": "Discussing principles and techniques for writing code that is not only functional but also readable, maintainable, and elegant.",
+    "date": "2024-01-08",
+    "markdownFile": "building-scalable-react-apps.md",
+    "tags": ["Code Quality", "Best Practices", "Development"]
+  },
+  {
+    "id": 3,
+    "title": "Modern CSS Techniques for Better UX",
+    "summary": "Diving into contemporary CSS features and methodologies that enhance user experience and developer productivity.",
+    "date": "2024-01-01",
+    "markdownFile": "building-scalable-react-apps.md",
+    "tags": ["CSS", "UX", "Frontend"]
+  }
+]

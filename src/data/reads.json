@@ -1,0 +1,67 @@
+[
+  {
+    "id": 1,
+    "title": "The Pragmatic Programmer: From Journeyman to Master",
+    "source": "David Thomas & Andrew Hunt",
+    "link": "https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/",
+    "dateRead": "2024-01-20",
+    "description": "A timeless guide to software craftsmanship that emphasizes practical approaches to programming. The book covers essential topics like code organization, debugging techniques, and professional development practices that every developer should know."
+  },
+  {
+    "id": 2,
+    "title": "Building Resilient Systems: Best Practices for Modern Architecture",
+    "source": "Martin Fowler's Blog",
+    "link": "https://martinfowler.com/articles/resilient-systems.html",
+    "dateRead": "2024-01-18",
+    "description": "An insightful article on designing systems that can handle failures gracefully. Fowler discusses patterns like circuit breakers, bulkheads, and timeouts that are crucial for building reliable distributed systems."
+  },
+  {
+    "id": 3,
+    "title": "React 18: What's New and What Changed",
+    "source": "React Blog",
+    "link": "https://react.dev/blog/2022/03/29/react-v18",
+    "dateRead": "2024-01-15",
+    "description": "The official announcement of React 18 with detailed explanations of new features like automatic batching, concurrent rendering, and the new Suspense capabilities. Essential reading for staying current with React development."
+  },
+  {
+    "id": 4,
+    "title": "The Art of Readable Code",
+    "source": "Dustin Boswell & Trevor Foucher",
+    "link": "https://www.oreilly.com/library/view/the-art-of/9781449318482/",
+    "dateRead": "2024-01-12",
+    "description": "A practical guide focused on writing code that others can easily understand and maintain. The authors provide concrete examples and techniques for improving variable names, comments, and code structure."
+  },
+  {
+    "id": 5,
+    "title": "Understanding TypeScript's Type System",
+    "source": "TypeScript Handbook",
+    "link": "https://www.typescriptlang.org/docs/handbook/2/types.html",
+    "dateRead": "2024-01-10",
+    "description": "A comprehensive deep dive into TypeScript's type system, covering advanced concepts like conditional types, mapped types, and type inference. Helped me better understand how to leverage TypeScript's full potential."
+  },
+  {
+    "id": 6,
+    "title": "Clean Architecture: A Craftsman's Guide",
+    "source": "Robert C. Martin",
+    "link": "https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html",
+    "dateRead": "2024-01-08",
+    "description": "Uncle Bob's influential post on software architecture principles. The article introduces the concept of clean architecture and how to structure applications to be independent of frameworks, databases, and external dependencies."
+  },
+  {
+    "id": 7,
+    "title": "Designing Data-Intensive Applications",
+    "source": "Martin Kleppmann",
+    "link": "https://dataintensive.net/",
+    "dateRead": "2024-01-05",
+    "description": "An essential resource for understanding how modern data systems work. Kleppmann explains complex topics like distributed databases, streaming systems, and data consistency in an accessible way."
+  },
+  {
+    "id": 8,
+    "title": "Modern CSS Layout Techniques",
+    "source": "CSS-Tricks",
+    "link": "https://css-tricks.com/snippets/css/complete-guide-grid/",
+    "dateRead": "2024-01-03",
+    "description": "A comprehensive guide to CSS Grid that covers everything from basic concepts to advanced layout patterns. This resource helped me master modern CSS layout techniques and create more responsive designs."
+  }
+]
+
