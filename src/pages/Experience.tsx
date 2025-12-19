@@ -21,7 +21,7 @@ const ExperienceItem = styled.div<{ $isVisible: boolean; $delay: number }>`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing[2]};
-  padding-bottom: ${({ theme }) => theme.spacing[8]};
+  padding-bottom: ${({ theme }) => theme.spacing[4]};
   border-bottom: 1px solid ${({ theme }) => theme.colors.lightgray};
   
   opacity: ${({ $isVisible }) => $isVisible ? 1 : 0};
