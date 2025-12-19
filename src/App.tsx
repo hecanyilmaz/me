@@ -18,6 +18,14 @@ const MainContent = styled.main`
   position: relative;
   flex: 1;
   overflow-y: auto;
+  
+  /* Hide scrollbar */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 function App() {

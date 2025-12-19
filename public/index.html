@@ -50,24 +50,24 @@
         min-height: 100vh;
       }
       
-      /* Hide scrollbars on mobile devices and small screens */
+      /* Hide scrollbars globally */
+      ::-webkit-scrollbar {
+        display: none;
+        width: 0px;
+        background: transparent;
+      }
+      
+      html {
+        scrollbar-width: none;
+      }
+      
+      body {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+      }
+
+      /* Mobile optimizations */
       @media (max-width: 768px) {
-        /* Hide scrollbar for webkit browsers (Chrome, Safari, Edge) */
-        ::-webkit-scrollbar {
-          display: none;
-        }
-        
-        /* Hide scrollbar for Firefox */
-        html {
-          scrollbar-width: none;
-        }
-        
-        /* For older webkit browsers */
-        body {
-          -ms-overflow-style: none;  /* IE and Edge */
-          scrollbar-width: none;  /* Firefox */
-        }
-        
         /* Ensure content fits without horizontal scroll */
         body, html {
           overflow-x: hidden;
@@ -80,11 +80,6 @@
         /* Even more aggressive scrollbar hiding for very small screens */
         * {
           -webkit-overflow-scrolling: touch;
-        }
-        
-        ::-webkit-scrollbar {
-          width: 0px;
-          background: transparent;
         }
       }
     </style>

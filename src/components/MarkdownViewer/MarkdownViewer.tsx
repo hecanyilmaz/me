@@ -65,6 +65,13 @@ const MarkdownContent = styled.div`
     overflow-x: auto;
     margin: ${({ theme }) => theme.spacing[4]} 0;
     border: 1px solid ${({ theme }) => theme.colors.lightgray};
+    
+    /* Hide scrollbar */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   img {

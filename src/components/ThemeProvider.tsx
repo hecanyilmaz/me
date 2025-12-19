@@ -10,6 +10,8 @@ const GlobalStyle = createGlobalStyle`
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    /* Hide scrollbar for Firefox */
+    scrollbar-width: none;
   }
   
   body {
@@ -17,27 +19,13 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     overflow-x: hidden;
     width: 100vw;
-    
-    /* Force scrollbar to always be visible to prevent layout shifts */
-    overflow-y: scroll;
+    /* Hide scrollbar for IE, Edge */
+    -ms-overflow-style: none;
   }
   
-  /* Ensure consistent scrollbar styling */
+  /* Hide scrollbar for Chrome, Safari and Opera */
   ::-webkit-scrollbar {
-    width: 8px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: ${({ theme }) => theme.colors.lightgray};
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: ${({ theme }) => theme.colors.gray};
-    border-radius: 4px;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: ${({ theme }) => theme.colors.darkgray};
+    display: none;
   }
 `;
 
