@@ -143,19 +143,6 @@ const IntroText = styled(Text)`
   margin: 0 0 2rem 0;
 `;
 
-const StatsSection = styled.div`
-  margin-top: ${({ theme }) => theme.spacing[0]};
-  padding: ${({ theme }) => theme.spacing[4]} 0;
-  text-align: center;
-  border-bottom: 1px solid rgba(51, 51, 51, 0.1);
-`;
-
-const StatsText = styled(Text)`
-  color: ${({ theme }) => theme.colors.darkgray};
-  opacity: 0.7;
-  font-size: ${({ theme }) => theme.typography.fontSize.sm};
-`;
-
 export const Projects: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   
@@ -187,12 +174,6 @@ export const Projects: React.FC = () => {
     <Section background="cream">
       <Container>
         <ContentWrapper>
-          <StatsSection>
-            <StatsText>
-              {sortedProjects.length} projects showcased
-            </StatsText>
-          </StatsSection>
-
           <ProjectsList>
             {sortedProjects.map((project, index) => (
               <ProjectItem 

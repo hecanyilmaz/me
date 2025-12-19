@@ -98,8 +98,8 @@ const Location = styled.span`
 `;
 
 const Position = styled.div`
-  font-family: ${({ theme }) => theme.typography.fontFamily.bold};
-  font-size: ${({ theme }) => theme.typography.fontSize.lg};
+  font-family: ${({ theme }) => theme.typography.fontFamily.regular};
+  font-size: ${({ theme }) => theme.typography.fontSize.sm};
   color: ${({ theme }) => theme.colors.red};
   margin-bottom: ${({ theme }) => theme.spacing[2]};
 `;

@@ -120,7 +120,7 @@ export const Home: React.FC = () => {
               </ContactText>
               
               <ContactText as="p">
-                <b>You can contact me using <ContactLink href="https://github.com/hecanyilmaz" target="_blank" rel="noopener noreferrer">GitHub</ContactLink>, <ContactLink href="https://www.linkedin.com/in/hecanyilmaz/" target="_blank" rel="noopener noreferrer">LinkedIn</ContactLink> and through <ContactLink href="mailto:hecanyilmaz@gmail.com">e-mail</ContactLink>.</b>
+                <b>You can contact me through <ContactLink href="mailto:hecanyilmaz@gmail.com">e-mail</ContactLink>.</b>
               </ContactText>
             </TextSection>
           </AboutContent>
