@@ -1,5 +1,4 @@
 export interface Scene {
-  id: string;
   photo_name: string;
   date: string;
   place: string;

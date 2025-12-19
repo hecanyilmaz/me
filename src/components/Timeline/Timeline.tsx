@@ -247,7 +247,7 @@ export const Timeline: React.FC<TimelineProps> = ({ scenes }) => {
     <TimelineContainer>
       {scenes.map((scene, index) => (
         <TimelineItem 
-          key={scene.id}
+          key={scene.photo_name}
           $delay={index * 0.2}
           $isVisible={isVisible}
         >
