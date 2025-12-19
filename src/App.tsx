@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider, Header } from './components';
-import { Home, Articles, ArticleDetail, Reads, Projects, Scenes } from './pages';
+import { Home, Articles, ArticleDetail, Projects, Scenes } from './pages';
 import styled from 'styled-components';
 
 const AppWrapper = styled.div`
@@ -26,7 +26,6 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/articles" element={<Articles />} />
               <Route path="/articles/:slug" element={<ArticleDetail />} />
-              <Route path="/readings" element={<Reads />} />
               <Route path="/projects" element={<Projects />} />
               <Route path="/scenes" element={<Scenes />} />
             </Routes>

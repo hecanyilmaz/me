@@ -5,5 +5,12 @@
     "date": "2025-11-27",
     "markdownFile": "reliable-maintainable-scalable-systems.md",
     "tags": ["Architecture", "Software Engineering", "System Design"]
+  },
+  {
+    "title": "GFS",
+    "summary": "Exploring the architecture and design of the Google File System.",
+    "date": "2025-12-18",
+    "markdownFile": "gfs.md",
+    "tags": ["Architecture", "System Design", "Distributed File System"]
   }
 ]

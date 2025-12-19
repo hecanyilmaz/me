@@ -119,19 +119,6 @@ const Tag = styled.span`
   }
 `;
 
-const StatsSection = styled.div`
-  margin-top: ${({ theme }) => theme.spacing[0]};
-  padding: ${({ theme }) => theme.spacing[4]} 0;
-  text-align: center;
-  border-bottom: 1px solid rgba(51, 51, 51, 0.1);
-`;
-
-const StatsText = styled(Text)`
-  color: ${({ theme }) => theme.colors.darkgray};
-  opacity: 0.7;
-  font-size: ${({ theme }) => theme.typography.fontSize.sm};
-`;
-
 export const Articles: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   
@@ -173,12 +160,6 @@ export const Articles: React.FC = () => {
     <Section background="cream">
       <Container>
         <ContentWrapper>
-
-          <StatsSection>
-            <StatsText>
-              {sortedArticles.length} articles published
-            </StatsText>
-          </StatsSection>
 
           <ArticlesList>
             {sortedArticles.map((article, index) => (

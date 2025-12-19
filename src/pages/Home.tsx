@@ -116,20 +116,11 @@ export const Home: React.FC = () => {
             
             <TextSection $isVisible={isVisible}>
               <ContactText as="p">
-                Hi there!
-              </ContactText>
-
-              <ContactText as="p">
-                My name is Can, and I actively finding 
-                wonder in the details of technology, nature, and art. I also like questioning the things that are not clear to me.
-              </ContactText>
-
-              <ContactText as="p">
-                I'm currently working as a Software Engineer at <b>GarantiBBVA</b>. I'm graduated from Hacettepe University, Computer Engineering Department in 2024.
+                <b>Hi there! My name is Can, I graduated from Hacettepe University. I'm a software engineer with two years of experience at GarantiBBVA and interested in distributed systems and cloud computing.</b>
               </ContactText>
               
               <ContactText as="p">
-                You can contact me using <ContactLink href="https://github.com/hecanyilmaz" target="_blank" rel="noopener noreferrer">GitHub</ContactLink>, <ContactLink href="https://www.linkedin.com/in/hecanyilmaz/" target="_blank" rel="noopener noreferrer">LinkedIn</ContactLink> and through <ContactLink href="mailto:hecanyilmaz@gmail.com">e-mail</ContactLink>.
+                <b>You can contact me using <ContactLink href="https://github.com/hecanyilmaz" target="_blank" rel="noopener noreferrer">GitHub</ContactLink>, <ContactLink href="https://www.linkedin.com/in/hecanyilmaz/" target="_blank" rel="noopener noreferrer">LinkedIn</ContactLink> and through <ContactLink href="mailto:hecanyilmaz@gmail.com">e-mail</ContactLink>.</b>
               </ContactText>
             </TextSection>
           </AboutContent>

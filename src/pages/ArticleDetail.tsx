@@ -1,30 +1,9 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { MarkdownViewer, Container, Section, Text } from '../components';
 import { Article } from '../types/articles';
 import articlesData from '../data/articles.json';
-
-const BackLink = styled(Link)`
-  display: inline-flex;
-  align-items: center;
-  gap: ${({ theme }) => theme.spacing[2]};
-  color: ${({ theme }) => theme.colors.darkgray};
-  text-decoration: none;
-  font-family: ${({ theme }) => theme.typography.fontFamily.regular};
-  font-size: ${({ theme }) => theme.typography.fontSize.base};
-  margin-bottom: ${({ theme }) => theme.spacing[6]};
-  transition: color 0.2s ease;
-  
-  &:hover {
-    color: ${({ theme }) => theme.colors.red};
-  }
-  
-  &::before {
-    content: '←';
-    font-size: ${({ theme }) => theme.typography.fontSize.lg};
-  }
-`;
 
 const ContentWrapper = styled.div`
   max-width: 800px;
@@ -56,7 +35,6 @@ export const ArticleDetail: React.FC = () => {
       <Section background="cream">
         <Container>
           <ContentWrapper>
-            <BackLink to="/articles">Back to Articles</BackLink>
             <NotFoundWrapper>
               <NotFoundText>Article not found</NotFoundText>
               <Text size="base" color="gray">
@@ -71,11 +49,6 @@ export const ArticleDetail: React.FC = () => {
 
   return (
     <Section background="cream">
-      <Container>
-        <ContentWrapper>
-          <BackLink to="/articles">Back to Articles</BackLink>
-        </ContentWrapper>
-      </Container>
       <MarkdownViewer markdownFile={article.markdownFile} />
     </Section>
   );

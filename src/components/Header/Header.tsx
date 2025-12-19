@@ -144,7 +144,6 @@ export const Header: React.FC = () => {
   const navItems = [
     { path: '/', label: 'About', mobileOnly: true },
     { path: '/articles', label: 'Articles' },
-    { path: '/readings', label: 'Readings' },
     { path: '/projects', label: 'Projects' },
     { path: '/scenes', label: 'Scenes' },
   ];

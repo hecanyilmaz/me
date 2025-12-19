@@ -1,11 +1,20 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import styled from 'styled-components';
 import { Container, Section } from '../';
 import { markdownCache } from '../../hooks/useMarkdownPreloader';
-import { useReadingProgress } from '../../hooks/useReadingProgress';
+
+const ArticleImage = styled.img<{ $width?: string }>`
+  display: block;
+  margin: ${({ theme }) => theme.spacing[8]} auto;
+  width: ${({ $width }) => $width ? $width : 'auto'};
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+`;
 
 const MarkdownContainer = styled.div`
   max-width: 800px;
@@ -56,6 +65,15 @@ const MarkdownContent = styled.div`
     overflow-x: auto;
     margin: ${({ theme }) => theme.spacing[4]} 0;
     border: 1px solid ${({ theme }) => theme.colors.lightgray};
+  }
+
+  img {
+    display: block;
+    margin: ${({ theme }) => theme.spacing[8]} auto; /* Centers the image vertically and horizontally */
+    max-width: 80%; /* Matches your original width="80%" preference */
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow */
   }
   
   code {
@@ -170,28 +188,6 @@ const MarkdownWrapper = styled.div<{ $isLoaded: boolean }>`
   transition: opacity 0.3s ease;
 `;
 
-const ProgressBar = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  z-index: 1000;
-  background-color: rgba(51, 51, 51, 0.1);
-`;
-
-const ProgressFill = styled.div<{ $progress: number }>`
-  height: 100%;
-  width: ${({ $progress }) => $progress}%;
-  background: linear-gradient(
-    90deg,
-    ${({ theme }) => theme.colors.red},
-    ${({ theme }) => theme.colors.darkred}
-  );
-  transition: width 0.15s ease;
-`;
-
-
 interface MarkdownViewerProps {
   markdownFile: string;
 }
@@ -201,8 +197,22 @@ export const MarkdownViewer: React.FC<MarkdownViewerProps> = ({ markdownFile }) 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isContentLoaded, setIsContentLoaded] = useState(false);
-  const markdownRef = useRef<HTMLDivElement>(null);
-  const readingProgress = useReadingProgress({ contentRef: markdownRef });
+  const components = useMemo(() => ({
+    img: ({ src, alt }: React.ImgHTMLAttributes<HTMLImageElement>) => {
+      let width = '100%';
+      let cleanSrc = src;
+
+      if (src && src.includes('#')) {
+        const [url, hash] = src.split('#');
+        if (hash && !isNaN(Number(hash))) {
+          width = `${hash}%`;
+          cleanSrc = url;
+        }
+      }
+
+      return <ArticleImage src={cleanSrc} alt={alt} $width={width} />;
+    }
+  }), []); 
 
   useEffect(() => {
     const loadMarkdown = async () => {
@@ -299,27 +309,23 @@ export const MarkdownViewer: React.FC<MarkdownViewerProps> = ({ markdownFile }) 
   }
 
   return (
-    <>
-      <ProgressBar>
-        <ProgressFill $progress={readingProgress} />
-      </ProgressBar>
-      <Section background="cream">
-        <Container>
-          <MarkdownContainer>
-            <MarkdownWrapper $isLoaded={isContentLoaded} ref={markdownRef}>
-              <MarkdownContent>
-                <ReactMarkdown
-                  remarkPlugins={[remarkGfm]}
+    <Section background="cream">
+      <Container>
+        <MarkdownContainer>
+          <MarkdownWrapper $isLoaded={isContentLoaded}>
+            <MarkdownContent>
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
                   rehypePlugins={[rehypeHighlight]}
+                  components={components}
                 >
                   {markdown}
                 </ReactMarkdown>
               </MarkdownContent>
             </MarkdownWrapper>
-          </MarkdownContainer>
-        </Container>
-      </Section>
-    </>
+        </MarkdownContainer>
+      </Container>
+    </Section>
   );
 };
 
