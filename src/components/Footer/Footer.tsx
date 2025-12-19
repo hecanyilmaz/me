@@ -7,8 +7,38 @@ const FooterWrapper = styled.footer`
   width: 100%;
   padding: ${({ theme }) => theme.spacing[8]} 0;
   background-color: ${({ theme }) => theme.colors.cream};
-  border-top: 1px solid ${({ theme }) => theme.colors.lightgray};
   margin-top: auto;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - ${({ theme }) => theme.spacing[16]});
+    max-width: 900px;
+    height: 1px;
+    background-color: ${({ theme }) => theme.colors.lightgray};
+    
+    ${({ theme }) => theme.mediaQueries.tablet} {
+      width: calc(100% - ${({ theme }) => theme.spacing[24]});
+    }
+    
+    ${({ theme }) => theme.mediaQueries.desktop} {
+      width: calc(100% - ${({ theme }) => theme.spacing[32]});
+      max-width: 800px;
+    }
+    
+    ${({ theme }) => theme.mediaQueries.wide} {
+      width: calc(100% - ${({ theme }) => theme.spacing[40]});
+      max-width: 900px;
+    }
+    
+    ${({ theme }) => theme.mediaQueries.maxTablet} {
+      width: calc(100% - ${({ theme }) => theme.spacing[8]});
+    }
+  }
 `;
 
 const FooterContent = styled.div`
