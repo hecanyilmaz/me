@@ -9,7 +9,7 @@ import { useMarkdownPreloader } from '../hooks/useMarkdownPreloader';
 const ContentWrapper = styled.div`
   max-width: 900px;
   margin: 0 auto;
-  padding: ${({ theme }) => theme.spacing[0]} 0;
+  padding: ${({ theme }) => theme.spacing[4]} 0;
 
   ${({ theme }) => theme.mediaQueries.maxMobile} {
     padding-top: ${({ theme }) => theme.spacing[2]};
@@ -20,7 +20,7 @@ const ArticlesList = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing[1]};
-  margin-top: ${({ theme }) => theme.spacing[8]};
+  margin-top: ${({ theme }) => theme.spacing[0]};
 
   ${({ theme }) => theme.mediaQueries.maxMobile} {
     margin-top: ${({ theme }) => theme.spacing[4]};
