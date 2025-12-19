@@ -2,7 +2,7 @@
   "name": "about-me-website",
   "version": "1.0.0",
   "description": "Personal about me website built with React",
-  "homepage": "https://hecanyilmaz.github.io/me",
+  "homepage": "https://hecanyilmaz.com",
   "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
