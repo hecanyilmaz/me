@@ -1,6 +1,7 @@
 // Layout Components
 export { Container, Section } from './Layout';
 export { Header } from './Header';
+export { Footer } from './Footer';
 
 // Typography Components  
 export { Heading, Text } from './Typography';

@@ -1,5 +1,5 @@
 import { BrowserRouter as Router } from 'react-router-dom';
-import { ThemeProvider, Header } from './components';
+import { ThemeProvider, Header, Footer } from './components';
 import { AppNavigator } from './navigation';
 import styled from 'styled-components';
 
@@ -8,11 +8,14 @@ const AppWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.cream};
   overflow-x: hidden;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 const MainContent = styled.main`
   width: 100%;
   position: relative;
+  flex: 1;
 `;
 
 function App() {
@@ -24,6 +27,7 @@ function App() {
           <MainContent>
             <AppNavigator />
           </MainContent>
+          <Footer />
         </AppWrapper>
       </Router>
     </ThemeProvider>
