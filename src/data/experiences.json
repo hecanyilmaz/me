@@ -1,6 +1,6 @@
 [
   {
-    "company": "Garanti BBVA Technology",
+    "company": "GarantiBBVA Technology",
     "position": "Software Engineer",
     "duration": "Jun 2024 - Present",
     "description": "Working on the high-traffic domains such as promotions, campaigns and notifications. Developing new features and improving the existing ones. Working on the microservices architecture.",
@@ -16,7 +16,7 @@
     "location": "Ankara, Turkey"
   },
   {
-    "company": "HAVELSAN",
+    "company": "Havelsan",
     "position": "Software Engineer Intern",
     "duration": "Jul 2023 - Aug 2023",
     "description": "Designed a standalone secured message transferring service to quickly transmit messages between units of the enterprise using Spring Boot framework via gRPC calls.",
@@ -24,7 +24,7 @@
     "location": "Ankara, Turkey"
   },
   {
-    "company": "TUBITAK",
+    "company": "Tubitak",
     "position": "Research Intern",
     "duration": "Jan 2023 - Sep 2023",
     "description": "Worked on the development of a new algorithm for the detection of small objects in images. The algorithm is used for the detection of small objects in images for the purpose of traffic monitoring.",

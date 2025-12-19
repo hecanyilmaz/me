@@ -39,8 +39,13 @@ const HeaderRow = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  flex-wrap: wrap;
   gap: ${({ theme }) => theme.spacing[2]};
+
+  ${({ theme }) => theme.mediaQueries.maxMobile} {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
 `;
 
 const HeaderLeft = styled.div`
@@ -102,6 +107,10 @@ const Position = styled.div`
   font-size: ${({ theme }) => theme.typography.fontSize.sm};
   color: ${({ theme }) => theme.colors.red};
   margin-bottom: ${({ theme }) => theme.spacing[2]};
+
+  ${({ theme }) => theme.mediaQueries.maxMobile} {
+    margin-bottom: 0;
+  }
 `;
 
 const TechnologiesList = styled.div`
