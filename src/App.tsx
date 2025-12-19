@@ -4,9 +4,10 @@ import { AppNavigator } from './navigation';
 import styled from 'styled-components';
 
 const AppWrapper = styled.div`
-  min-height: 100vh;
+  height: 100vh;
+  height: 100dvh;
   background-color: ${({ theme }) => theme.colors.cream};
-  overflow-x: hidden;
+  overflow: hidden;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -16,6 +17,7 @@ const MainContent = styled.main`
   width: 100%;
   position: relative;
   flex: 1;
+  overflow-y: auto;
 `;
 
 function App() {
