@@ -18,7 +18,7 @@ export const useMarkdownPreloader = ({ markdownFiles, priority = 1 }: UseMarkdow
 
       try {
         const publicUrl = process.env.PUBLIC_URL || '';
-        const basePath = publicUrl || (process.env.NODE_ENV === 'production' ? '/me' : '');
+        const basePath = publicUrl;
         const fetchUrl = `${basePath}/articles/${filename}`;
         
         const response = await fetch(fetchUrl);

@@ -18,7 +18,7 @@ const ExperienceList = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing[8]};
-  margin-top: ${({ theme }) => theme.spacing[8]};
+  margin-top: ${({ theme }) => theme.spacing[2]};
 
   ${({ theme }) => theme.mediaQueries.maxMobile} {
     margin-top: ${({ theme }) => theme.spacing[4]};
