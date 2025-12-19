@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Container, Section, Heading, Text, Timeline } from '../components';
+import { Container, Section, Heading, Text, SceneGrid } from '../components';
 import scenesData from '../data/scenes.json';
 import { ScenesData, SceneWithPath } from '../types/scenes';
 import { sceneImages } from '../assets/scenes';
@@ -36,7 +36,7 @@ export const Scenes: React.FC = () => {
     <Section background="cream">
       <Container>
         <ContentWrapper>
-          <Timeline scenes={scenesWithImages} />
+          <SceneGrid scenes={scenesWithImages} />
         </ContentWrapper>
       </Container>
     </Section>

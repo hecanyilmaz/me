@@ -8,7 +8,7 @@ export { Heading, Text } from './Typography';
 
 // UI Components
 export { Card } from './Card';
-export { Timeline } from './Timeline';
+export { SceneGrid } from './SceneGrid';
 export { MarkdownViewer } from './MarkdownViewer';
 
 // Provider Components

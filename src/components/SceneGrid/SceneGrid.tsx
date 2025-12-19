@@ -2,100 +2,39 @@ import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { SceneWithPath } from '../../types/scenes';
 
-interface TimelineProps {
+interface SceneGridProps {
   scenes: SceneWithPath[];
 }
 
-const TimelineContainer = styled.div`
-  position: relative;
+const GridContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: ${({ theme }) => theme.spacing[6]};
   max-width: 1000px;
   margin: 0 auto;
   padding: ${({ theme }) => theme.spacing[8]} 0;
   
-  ${({ theme }) => theme.mediaQueries.maxMobile} {
+  ${({ theme }) => theme.mediaQueries.maxTablet} {
+    grid-template-columns: 1fr;
     padding: ${({ theme }) => theme.spacing[4]} 0;
-  }
-  
-  &::before {
-    content: '';
-    position: absolute;
-    left: 80px;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background-color: ${({ theme }) => theme.colors.darkgray};
-    
-    ${({ theme }) => theme.mediaQueries.maxTablet} {
-      left: 30px;
-      width: 1px;
-    }
   }
 `;
 
-const TimelineItem = styled.div<{ $delay: number; $isVisible: boolean }>`
+const GridItem = styled.div<{ $delay: number; $isVisible: boolean }>`
   display: flex;
-  align-items: flex-start;
-  padding: ${({ theme }) => theme.spacing[6]} 0;
-  position: relative;
-  padding-left: 120px;
+  flex-direction: column;
+  background-color: ${({ theme }) => theme.colors.cream};
   opacity: ${({ $isVisible }) => $isVisible ? 1 : 0};
   transform: ${({ $isVisible }) => $isVisible ? 'translateY(0)' : 'translateY(30px)'};
   transition: opacity 0.8s ease ${({ $delay }) => $delay}s, 
               transform 0.8s ease ${({ $delay }) => $delay}s;
-  
-  ${({ theme }) => theme.mediaQueries.maxTablet} {
-    padding-left: 70px;
-  }
-`;
-
-const TimelineContent = styled.div`
-  background-color: ${({ theme }) => theme.colors.cream};
-  padding: ${({ theme }) => theme.spacing[6]};
-  flex: 1;
-  position: relative;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 20px;
-    right: 100%;
-    border: 10px solid transparent;
-    border-right-color: ${({ theme }) => theme.colors.cream};
-  }
-`;
-
-const TimelineDot = styled.div`
-  position: absolute;
-  left: 80px;
-  top: 30px;
-  width: 16px;
-  height: 16px;
-  background-color: ${({ theme }) => theme.colors.darkgray};
-  border-radius: 50%;
-  transform: translateX(-50%);
-  border: 3px solid ${({ theme }) => theme.colors.darkgray};
-  box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.darkgray};
-  
-  ${({ theme }) => theme.mediaQueries.maxTablet} {
-    left: 30px;
-    width: 10px;
-    height: 10px;
-    border: 2px solid ${({ theme }) => theme.colors.darkgray};
-    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.darkgray};
-  }
 `;
 
 const ImageContainer = styled.div`
   position: relative;
-  width: 300px;
-  height: 300px;
-  margin-bottom: ${({ theme }) => theme.spacing[4]};
-  
-  ${({ theme }) => theme.mediaQueries.maxTablet} {
-    width: 100%;
-    max-width: 250px;
-    height: 200px;
-  }
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  margin-bottom: ${({ theme }) => theme.spacing[3]};
 `;
 
 const SceneImage = styled.img<{ $loaded: boolean }>`
@@ -146,23 +85,26 @@ const ErrorPlaceholder = styled.div`
   font-size: ${({ theme }) => theme.typography.fontSize.sm};
 `;
 
+const SceneInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 const SceneDate = styled.div`
   font-family: ${({ theme }) => theme.typography.fontFamily.regular};
   font-size: ${({ theme }) => theme.typography.fontSize.xs};
   color: ${({ theme }) => theme.colors.darkgray};
-  margin-bottom: ${({ theme }) => theme.spacing[2]};
+  margin-bottom: ${({ theme }) => theme.spacing[1]};
   text-transform: uppercase;
   letter-spacing: 0.5px;
 `;
 
 const ScenePlace = styled.h3`
   font-family: ${({ theme }) => theme.typography.fontFamily.regular};
-  font-size: ${({ theme }) => theme.typography.fontSize.sm};
+  font-size: ${({ theme }) => theme.typography.fontSize.base};
   color: ${({ theme }) => theme.colors.darkgray};
-  margin: 0 0 ${({ theme }) => theme.spacing[3]} 0;
+  margin: 0;
 `;
-
-
 
 const formatDate = (dateString: string): string => {
   const date = new Date(dateString);
@@ -235,11 +177,10 @@ const LazyImage: React.FC<LazyImageProps> = ({ src, alt }) => {
   );
 };
 
-export const Timeline: React.FC<TimelineProps> = ({ scenes }) => {
+export const SceneGrid: React.FC<SceneGridProps> = ({ scenes }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Trigger staggered animations after component mounts
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 200);
@@ -248,24 +189,24 @@ export const Timeline: React.FC<TimelineProps> = ({ scenes }) => {
   }, []);
 
   return (
-    <TimelineContainer>
+    <GridContainer>
       {scenes.map((scene, index) => (
-        <TimelineItem 
+        <GridItem 
           key={scene.photo_name}
-          $delay={index * 0.2}
+          $delay={index * 0.1}
           $isVisible={isVisible}
         >
-          <TimelineDot />
-          <TimelineContent>
-            <LazyImage 
-              src={scene.photo_path} 
-              alt={scene.place}
-            />
+          <LazyImage 
+            src={scene.photo_path} 
+            alt={scene.place}
+          />
+          <SceneInfo>
             <SceneDate>{formatDate(scene.date)}</SceneDate>
             <ScenePlace>{scene.place}</ScenePlace>
-          </TimelineContent>
-        </TimelineItem>
+          </SceneInfo>
+        </GridItem>
       ))}
-    </TimelineContainer>
+    </GridContainer>
   );
 };
+
