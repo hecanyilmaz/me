@@ -1,6 +1,6 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { ThemeProvider, Header } from './components';
-import { Home, Articles, ArticleDetail, Projects, Scenes } from './pages';
+import { AppNavigator } from './navigation';
 import styled from 'styled-components';
 
 const AppWrapper = styled.div`
@@ -22,13 +22,7 @@ function App() {
         <AppWrapper>
           <Header />
           <MainContent>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/articles" element={<Articles />} />
-              <Route path="/articles/:slug" element={<ArticleDetail />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/scenes" element={<Scenes />} />
-            </Routes>
+            <AppNavigator />
           </MainContent>
         </AppWrapper>
       </Router>
