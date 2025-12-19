@@ -10,6 +10,10 @@ const ContentWrapper = styled.div`
   max-width: 1000px;
   margin: 0 auto;
   padding: ${({ theme }) => theme.spacing[4]} 0;
+
+  ${({ theme }) => theme.mediaQueries.maxMobile} {
+    padding-top: ${({ theme }) => theme.spacing[2]};
+  }
 `;
 
 export const Scenes: React.FC = () => {

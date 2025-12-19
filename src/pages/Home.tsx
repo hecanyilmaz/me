@@ -7,6 +7,10 @@ const ContentWrapper = styled.div`
   max-width: 800px;
   margin: 0 auto;
   padding: ${({ theme }) => theme.spacing[4]} 0;
+
+  ${({ theme }) => theme.mediaQueries.maxMobile} {
+    padding-top: ${({ theme }) => theme.spacing[2]};
+  }
 `;
 
 const AboutContent = styled.div`

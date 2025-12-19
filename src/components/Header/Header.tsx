@@ -66,6 +66,10 @@ const HeaderContainer = styled.div`
     gap: ${({ theme }) => theme.spacing[2]};
     justify-content: center;
   }
+
+  ${({ theme }) => theme.mediaQueries.maxMobile} {
+    padding-bottom: ${({ theme }) => theme.spacing[1]};
+  }
 `;
 
 const ProfileSection = styled.div`

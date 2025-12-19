@@ -12,6 +12,10 @@ const TimelineContainer = styled.div`
   margin: 0 auto;
   padding: ${({ theme }) => theme.spacing[8]} 0;
   
+  ${({ theme }) => theme.mediaQueries.maxMobile} {
+    padding: ${({ theme }) => theme.spacing[4]} 0;
+  }
+  
   &::before {
     content: '';
     position: absolute;

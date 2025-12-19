@@ -8,6 +8,10 @@ const ContentWrapper = styled.div`
   max-width: 900px;
   margin: 0 auto;
   padding: ${({ theme }) => theme.spacing[4]} 0;
+
+  ${({ theme }) => theme.mediaQueries.maxMobile} {
+    padding-top: ${({ theme }) => theme.spacing[2]};
+  }
 `;
 
 const ExperienceList = styled.div`
@@ -15,6 +19,10 @@ const ExperienceList = styled.div`
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing[8]};
   margin-top: ${({ theme }) => theme.spacing[8]};
+
+  ${({ theme }) => theme.mediaQueries.maxMobile} {
+    margin-top: ${({ theme }) => theme.spacing[4]};
+  }
 `;
 
 const ExperienceItem = styled.div<{ $isVisible: boolean; $delay: number }>`
