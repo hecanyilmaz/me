@@ -62,9 +62,11 @@ const HeaderRight = styled.div`
 
 const CompanyName = styled.h3`
   font-family: ${({ theme }) => theme.typography.fontFamily.bold};
-  font-size: ${({ theme }) => theme.typography.fontSize.xl};
+  font-size: ${({ theme }) => theme.typography.fontSize.lg};
+  font-weight: 700;
   color: ${({ theme }) => theme.colors.darkgray};
   margin: 0;
+  line-height: ${({ theme }) => theme.typography.lineHeight.tight};
   
   a {
     color: inherit;
@@ -75,18 +77,24 @@ const CompanyName = styled.h3`
       color: ${({ theme }) => theme.colors.red};
     }
   }
+
+  ${({ theme }) => theme.mediaQueries.maxTablet} {
+    font-size: ${({ theme }) => theme.typography.fontSize.base};
+  }
 `;
 
 const Duration = styled.span`
   font-family: ${({ theme }) => theme.typography.fontFamily.italic};
   font-size: ${({ theme }) => theme.typography.fontSize.sm};
-  color: ${({ theme }) => theme.colors.gray};
+  color: ${({ theme }) => theme.colors.darkgray};
+  opacity: 0.7;
 `;
 
 const Location = styled.span`
   font-family: ${({ theme }) => theme.typography.fontFamily.regular};
   font-size: ${({ theme }) => theme.typography.fontSize.sm};
-  color: ${({ theme }) => theme.colors.gray};
+  color: ${({ theme }) => theme.colors.darkgray};
+  opacity: 0.7;
 `;
 
 const Position = styled.div`

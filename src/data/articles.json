@@ -4,7 +4,7 @@
     "summary": "Exploring the concepts of reliability, scalability and maintainability in software engineering.",
     "date": "2025-11-27",
     "markdownFile": "reliable-maintainable-scalable-systems.md",
-    "tags": ["Architecture", "Software Engineering", "System Design"],
+    "tags": ["Architecture", "Principles of Data-Intensive Applications"],
     "originalSource": {
       "title": "Designing Data-Intensive Applications",
       "url": "https://dataintensive.net/"
