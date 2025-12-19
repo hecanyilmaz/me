@@ -5,5 +5,9 @@ export interface Article {
   date: string;
   markdownFile: string;
   tags: string[];
+  originalSource?: {
+    title: string;
+    url: string;
+  };
 }
 

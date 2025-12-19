@@ -97,6 +97,29 @@ const ArticleSummary = styled.p`
   }
 `;
 
+const SourceWrapper = styled.object`
+  display: block;
+  margin-bottom: ${({ theme }) => theme.spacing[2]};
+`;
+
+const SourceLink = styled.a`
+  font-family: ${({ theme }) => theme.typography.fontFamily.italic};
+  font-size: ${({ theme }) => theme.typography.fontSize.sm};
+  color: ${({ theme }) => theme.colors.red};
+  opacity: 0.9;
+  text-decoration: none;
+  cursor: pointer;
+  
+  &:hover {
+    text-decoration: underline;
+    opacity: 1;
+  }
+  
+  ${({ theme }) => theme.mediaQueries.maxTablet} {
+    font-size: ${({ theme }) => theme.typography.fontSize.xs};
+  }
+`;
+
 const TagsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -174,6 +197,17 @@ export const Articles: React.FC = () => {
                   <ArticleDate>{formatDate(article.date)}</ArticleDate>
                 </ArticleHeader>
                 <ArticleSummary>{article.summary}</ArticleSummary>
+                {article.originalSource && (
+                  <SourceWrapper onClick={(e: React.MouseEvent) => e.stopPropagation()}>
+                    <SourceLink 
+                      href={article.originalSource.url} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      notes from {article.originalSource.title}
+                    </SourceLink>
+                  </SourceWrapper>
+                )}
                 <TagsContainer>
                   {article.tags.map((tag, index) => (
                     <Tag key={index}>{tag}</Tag>
