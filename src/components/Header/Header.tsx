@@ -145,6 +145,7 @@ export const Header: React.FC = () => {
     { path: '/', label: 'About', mobileOnly: true },
     { path: '/articles', label: 'Articles' },
     { path: '/projects', label: 'Projects' },
+    { path: '/experience', label: 'Experience' },
     { path: '/scenes', label: 'Scenes' },
   ];
   

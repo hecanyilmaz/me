@@ -1,0 +1,34 @@
+[
+  {
+    "company": "Garanti BBVA Technology",
+    "position": "Software Engineer",
+    "duration": "Jun 2024 - Present",
+    "description": "Working on the high-traffic domains such as promotions, campaigns and notifications. Developing new features and improving the existing ones. Working on the microservices architecture.",
+    "technologies": ["Microservices", "Android", "Dataroid", "Hazelcast"],
+    "location": "Istanbul, Turkey"
+  },
+  {
+    "company": "Goaltech",
+    "position": "Data Engineer",
+    "duration": "Aug 2023 - Jan 2024",
+    "description": "Trained and deployed AWS SageMaker and Forecast models to generate NASDAQ stock price predictions.",
+    "technologies": ["Python", "AWS", "Spark", "Kafka"],
+    "location": "Ankara, Turkey"
+  },
+  {
+    "company": "HAVELSAN",
+    "position": "Software Engineer Intern",
+    "duration": "Jul 2023 - Aug 2023",
+    "description": "Designed a standalone secured message transferring service to quickly transmit messages between units of the enterprise using Spring Boot framework via gRPC calls.",
+    "technologies": ["Spring Boot", "gRPC", "ElasticSearch"],
+    "location": "Ankara, Turkey"
+  },
+  {
+    "company": "TUBITAK",
+    "position": "Research Intern",
+    "duration": "Jan 2023 - Sep 2023",
+    "description": "Worked on the development of a new algorithm for the detection of small objects in images. The algorithm is used for the detection of small objects in images for the purpose of traffic monitoring.",
+    "technologies": ["Python", "PyTorch", "TensorFlow"],
+    "location": "Ankara, Turkey"
+  }
+]
