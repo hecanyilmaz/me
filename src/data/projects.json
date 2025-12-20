@@ -1,45 +1,16 @@
 [
   {
-    "id": 1,
-    "title": "Personal Portfolio Website",
-    "description": "A modern, responsive portfolio website built with React and TypeScript. Features markdown support for articles, dark gray theme, and mobile-optimized design. Includes sections for articles, readings, projects, and timeline of scenes.",
-    "technologies": ["React", "TypeScript", "Styled Components", "React Router", "React Markdown"],
-    "githubUrl": "https://github.com/hecanyilmaz/portfolio",
-    "liveUrl": "https://hecanyilmaz.dev",
-    "date": "2024-01-20"
+    "title": "FashionFusion",
+    "description": "Our work, integrates visual, textual, and attribute data, our approach enhances the accuracy and robustness of fashion compatibility predictions.",
+    "technologies": ["Python", "PyTorch", "TensorFlow", "Hugging Face", "Transformers"],
+    "githubUrl": "https://docs.google.com/presentation/d/1TDTU4JbNs5QgYR9EaOPKlwThtXdnOwE7fYxiVmWyRQw/edit?slide=id.g2e2a4f7faa0_0_12#slide=id.g2e2a4f7faa0_0_12",
+    "date": "2024-06-01"
   },
   {
-    "id": 2,
-    "title": "E-Commerce Platform",
-    "description": "Full-stack e-commerce application with user authentication, product catalog, shopping cart, and payment integration. Built with modern web technologies and follows clean architecture principles.",
-    "technologies": ["React", "Node.js", "Express", "PostgreSQL", "Stripe API", "JWT"],
-    "githubUrl": "https://github.com/hecanyilmaz/ecommerce-app",
-    "date": "2024-01-10"
-  },
-  {
-    "id": 3,
-    "title": "Task Management Dashboard",
-    "description": "A collaborative task management tool with real-time updates, drag-and-drop functionality, and team collaboration features. Focuses on clean UI/UX and efficient workflow management.",
-    "technologies": ["React", "Redux Toolkit", "Socket.io", "Node.js", "MongoDB"],
-    "githubUrl": "https://github.com/hecanyilmaz/task-manager",
-    "liveUrl": "https://taskmanager-demo.netlify.app",
-    "date": "2023-12-15"
-  },
-  {
-    "id": 4,
-    "title": "Weather Analytics App",
-    "description": "A weather application that provides detailed analytics and forecasts using multiple weather APIs. Features data visualization, location-based weather, and historical weather data analysis.",
-    "technologies": ["React", "D3.js", "Weather API", "Chart.js", "Geolocation API"],
-    "githubUrl": "https://github.com/hecanyilmaz/weather-analytics",
-    "liveUrl": "https://weather-analytics-app.vercel.app",
-    "date": "2023-11-28"
-  },
-  {
-    "id": 5,
-    "title": "Microservices Architecture Template",
-    "description": "A scalable microservices template with Docker containerization, API gateway, service discovery, and monitoring. Designed for modern cloud-native applications with best practices.",
-    "technologies": ["Node.js", "Docker", "Kubernetes", "Redis", "Nginx", "Prometheus"],
-    "githubUrl": "https://github.com/hecanyilmaz/microservices-template",
-    "date": "2023-10-20"
+    "title": "Huber",
+    "description": "I built a system that automatically finds popular news stories online, picks the most interesting ones, and turns them into Instagram posts.",
+    "technologies": ["Python", "FastAPI", "Docker"],
+    "githubUrl": "https://github.com/hecanyilmaz/auto-news",
+    "date": "2025-12-18"
   }
 ]
