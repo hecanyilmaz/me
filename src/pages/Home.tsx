@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { Container, Section, Heading, Text } from '../components';
+import { Container, Section, Text } from '../components';
 import profileImage from '../assets/image.png';
 
 const ContentWrapper = styled.div`
@@ -8,8 +8,8 @@ const ContentWrapper = styled.div`
   margin: 0 auto;
   padding: ${({ theme }) => theme.spacing[4]} 0;
 
-  ${({ theme }) => theme.mediaQueries.maxMobile} {
-    padding-top: ${({ theme }) => theme.spacing[2]};
+  ${({ theme }) => theme.mediaQueries.maxTablet} {
+    padding-top: ${({ theme }) => theme.spacing[6]};
   }
 `;
 
@@ -120,7 +120,7 @@ export const Home: React.FC = () => {
             
             <TextSection $isVisible={isVisible}>
               <ContactText as="p">
-                <b>Hi there! My name is Can, I graduated from Hacettepe University. I'm a software engineer with two years of experience at GarantiBBVA and interested in distributed systems and cloud computing.</b>
+                <b>Hi there! My name is Hüseyin Can, you can call me Can, I graduated from Hacettepe University. I'm a software engineer with two years of experience at GarantiBBVA and interested in distributed systems and cloud computing.</b>
               </ContactText>
               
               <ContactText as="p">
