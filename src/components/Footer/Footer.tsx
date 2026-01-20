@@ -5,7 +5,7 @@ import { Container } from '../Layout';
 
 const FooterWrapper = styled.footer`
   width: 100%;
-  padding: ${({ theme }) => theme.spacing[8]} 0;
+  padding: ${({ theme }) => theme.spacing[3]} 0;
   background-color: ${({ theme }) => theme.colors.cream};
   margin-top: auto;
   position: relative;
